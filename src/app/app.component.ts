@@ -13,6 +13,8 @@ import { PersonaService } from 'src/app/servises/persona/persona.service';
 export class AppComponent implements  OnInit{
 
   personaForm!: FormGroup;
+  paises: any;
+
   constructor(
   public fb: FormBuilder,
   public estadosService: EstadosService,
@@ -23,14 +25,23 @@ export class AppComponent implements  OnInit{
   }
 
   ngOnInit(): void {
+
   this.personaForm = this.fb.group({
     nombre : ['', Validators.required],
     apellido : ['', Validators.required],
     edad : ['', Validators.required],
     pais : ['', Validators.required],
     estado : ['', Validators.required],
-   });
+   });;
+
+    this.paisesService.getAllPaises().subscribe(resp => {
+      this.paises = resp;
+      console.log(resp);
+      },
+      error => { console.error(error) }
+        )
   }
+
 
   guardar(): void{
 //
