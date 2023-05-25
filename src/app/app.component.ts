@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { EstadosService } from './servises/estados/estados.service';
-import { PaisesService } from './servises/paises/paises.service';
-import { PersonaService } from './servises/persona/persona.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EstadosService } from 'src/app/servises/estados/estados.service';
+import { PaisesService } from 'src/app/servises/paises/paises.service';
+import { PersonaService } from 'src/app/servises/persona/persona.service';
 
 
 @Component({
@@ -23,13 +23,13 @@ export class AppComponent implements  OnInit{
   }
 
   ngOnInit(): void {
-//   this.personaFrorm = this.fb.group({
-//     nombre : ['', Validators.required],
-//     apellido : ['', Validators.required],
-//     edad : ['', Validators.required],
-//     pais : ['', Validators.required],
-//     estado : ['', Validators.required],
-//    });
+  this.personaForm = this.fb.group({
+    nombre : ['', Validators.required],
+    apellido : ['', Validators.required],
+    edad : ['', Validators.required],
+    pais : ['', Validators.required],
+    estado : ['', Validators.required],
+   });
   }
 
   guardar(): void{
